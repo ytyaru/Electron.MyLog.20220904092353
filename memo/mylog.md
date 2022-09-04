@@ -231,6 +231,10 @@ code = code.replace(/\'\.\/src\/asset\/image\/monacoin\/\'/g, `'./asset/image/mo
 # やりたいこと
 
 * アップロードファイルを必要最小限にする（未使用ライブラリ等を省く）
+* リモートリポジトリ生成時のパラメータ設定
+    * homepage
+    * description
+    * topic
 * ドキュメント作成
     * ファイルを用意する
         * README.md
@@ -280,6 +284,8 @@ code = code.replace(/\'\.\/src\/asset\/image\/monacoin\/\'/g, `'./asset/image/mo
 * index.html
     * サイト元リポジトリURLリンク
     * Copyright
+        * yearは2022で固定
+            * 本当は最初につぶやいた年をセットしたい
 
 # 発見したバグ
 
