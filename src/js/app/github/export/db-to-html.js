@@ -10,7 +10,7 @@ class DbToHtml {
         return cms[0].values.map(r=>this.toComment(r[0], r[1], r[2])).join('')
     }
     toComment(id, content, created) {
-        return `<a id="${id}" class="anchor"></a><div class="mylog"><p>${this.br(this.autoLink(content))}</p><div class="mylog-meta">${this.#toTime(created)}<a href="#${id}">🔗</a>${this.#toMpurseButton()}</div></div>`
+        return `<a id="id-${id}" class="anchor"></a><div class="mylog"><p>${this.br(this.autoLink(content))}</p><div class="mylog-meta">${this.#toTime(created)}<a href="#id-${id}">🔗</a>${this.#toMpurseButton()}</div></div>`
     }
     #toMpurseButton(address=null) { return `<mpurse-send-button></mpurse-send-button>` }
     #toTime(created, isFixedHtml=false) {
