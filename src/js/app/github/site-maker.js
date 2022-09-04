@@ -5,7 +5,7 @@ class SiteMaker { // GitHub Pages で稼働するようファイル作成する�
     async make() { // 初回にリモートリポジトリを作成するとき一緒に作成する
         console.log('----- make() start -----')
         await Promise.all([
-            this.#cp(`lib/`),
+            //this.#cp(`lib/`),
             //this.#cp(`js/util/`),
             //this.#cp(`src/js/sns/`),
             //this.#cp(`js/sns/sns/`),
@@ -13,7 +13,7 @@ class SiteMaker { // GitHub Pages で稼働するようファイル作成する�
             this.#cp(`css/`),
             this.#cp(`asset/`),
             this.#cp(`db/mylog.db`),
-            this.#cp(`LICENSE.txt`),
+            window.myApi.cp(`LICENSE.txt`, `dst/${this.setting.github.repo}/LICENSE.txt`, {'recursive':true, 'preserveTimestamps':true}),
             this.#readMeCode(),
             this.#indexCode(),
             //window.myApi.cp(`src/js/app/github/export/index.html`, `dst/${this.setting.github.repo}/index.html`, {'recursive':true, 'preserveTimestamps':true}),
@@ -110,7 +110,7 @@ class SiteMaker { // GitHub Pages で稼働するようファイル作成する�
         const srcDir = `src/js/app/github/export/`
         const dstDir = `dst/${this.setting.github.repo}/`
         let code = await window.myApi.readTextFile(`${srcDir}/${file}`)
-        code = code.replace(/{{ProjectName}}/g, this.repo)
+        code = code.replace(/{{ProjectName}}/g, this.setting.github.repo)
         code = code.replace(/{{Description}}/g, '著者のつぶやきを掲載するサイトです。')
         code = code.replace(/{{SiteUrl}}/g, `https://${this.setting.github.username}.github.io/${this.setting.github.repo}/`)
         code = code.replace(/{{MakeToolUrl}}/g, 'https://github.com/ytyaru/Electron.MyLog.20220904092353')
