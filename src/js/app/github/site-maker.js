@@ -129,7 +129,7 @@ class SiteMaker { // GitHub Pages で稼働するようファイル作成する�
         //code = code.replace(/\'\.\/src\/asset\/image\/monacoin\/\'/g, `'./${this.setting.github.repo}/asset/image/monacoin/'`)
         code = code.replace(/{{username}}/g, this.setting.github.username)
         code = code.replace(/{{repo}}/g, this.setting.github.repo)
-        code = code.replace(/{{year}}/g, new Date().getFullYear())
+        code = code.replace(/{{year}}/g, new Date().getFullYear()) // 初回のみアップするから現時刻でよい
         console.debug(code)
         window.myApi.writeFile(`${dstDir}/${file}`, code)
     }

@@ -275,6 +275,13 @@ code = code.replace(/\'\.\/src\/asset\/image\/monacoin\/\'/g, `'./asset/image/mo
     * Install
     * Setting
 * Electronをパッケージ化してバイナリファイルを作成する
+* 機能追加
+    * AutoPager（最新20件ずつ表示するなど）
+    * つぶやき一件ごとに独立したHTMLページを作りリンクする
+        * 以下どちらで出力するのがよいかわからないので両方可能なようにしたい
+            * 動的HTML出力
+            * 静的HTML出力
+    * コメント受付・表示（Webmention）
 
 # 今回やったこと
 
@@ -286,7 +293,7 @@ code = code.replace(/\'\.\/src\/asset\/image\/monacoin\/\'/g, `'./asset/image/mo
     * Copyright
         * yearは2022で固定
             * 本当は最初につぶやいた年をセットしたい
-            * よく考えると最初に`git init`やcreateRepoした日時の年でいいから`new Date()`でイケる
+            * よく考えると最初に`git init`やcreateRepoした日時の年でいいから`new Date().getFullYear()`でイケる
 
 # 発見したバグ
 
@@ -301,5 +308,15 @@ code = code.replace(/\'\.\/src\/asset\/image\/monacoin\/\'/g, `'./asset/image/mo
 
 　原因は動的にHTMLを作成しているせいか？　ブラウザのURL欄にアンカーつきURLを入力すると、HTMLを作成する。そのあとでアンカー箇所にスクロールしてほしかったが、スクロールしない。
 
+　そもそも内部リンクは本当にこのような形式でいいのか？
 
+* つぶやき一件ごとに独立したページをもたせたほうがいいかも
+* それは静的HTML、動的HTMLどちらにすべきか
+
+　仮に今のまま1ページに全件表示するとしたらパフォーマンス問題が出てくる。
+
+* 最新順に20件ずつ表示するなどすべきでは？
+* そうした場合、やはりつぶやき一件ごとに独立したページにしたほうがよいのでは？
+
+　ちゃんと考えると、ものすごく大変なことになりそうな気がする。
 
