@@ -286,6 +286,7 @@ code = code.replace(/\'\.\/src\/asset\/image\/monacoin\/\'/g, `'./asset/image/mo
     * Copyright
         * yearは2022で固定
             * 本当は最初につぶやいた年をセットしたい
+            * よく考えると最初に`git init`やcreateRepoした日時の年でいいから`new Date()`でイケる
 
 # 発見したバグ
 
